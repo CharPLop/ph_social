@@ -550,9 +550,9 @@ function draw(targetCanvas){
     case"B":{
       dk?bgDark():fill(P.white);corner("tr",.5);
       c.fillStyle=T1;c.fillRect(0,0,W,6);
-      var bty=ct(v("title"),130,{s:38,col:T1,f:"sans"});
+      var bty=ct(v("title"),130,{s:44,col:T1,f:"sans"});
       sep(bty+10,T3+"90",.35);
-      ct(v("body"),bty+50,{w:"normal",s:26,f:"sans",col:T2,lh:1.55});
+      ct(v("body"),bty+50,{w:"normal",s:30,f:"sans",col:T2,lh:1.5});
       sf("300",16,"sans");c.fillStyle=T3;c.textAlign="right";c.fillText(v("slide"),W-40,H-35);
       break;
     }
