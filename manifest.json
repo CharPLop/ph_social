@@ -1,11 +1,11 @@
 {
-  "name": "Template Social — Psiche Holos",
-  "short_name": "Template PH",
+  "name": "PH Social — Psiche Holos",
+  "short_name": "PH Social",
   "description": "Generatore template Instagram per Psiche Holos e Dott.ssa Ilenia Tagliaferro",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#F5F5F5",
-  "theme_color": "#4A6741",
+  "background_color": "#2E2240",
+  "theme_color": "#48365A",
   "orientation": "portrait",
   "icons": [
     { "src": "icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" },
