@@ -315,6 +315,8 @@ const T=[
     {k:"prima_l",l:"Etichetta Prima",d:"PENSIERO AUTOMATICO"},{k:"prima",l:"Prima",d:"Devo essere\nperfetto in tutto.",t:"ta",r:2},{k:"dopo_l",l:"Etichetta Dopo",d:"PENSIERO FUNZIONALE"},{k:"dopo",l:"Dopo",d:"Posso fare del mio\nmeglio, e questo basta.",t:"ta",r:2},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
   {id:"MR",name:"Mito vs Realtà",a:"sq",d:"Format virale",fields:[
     {k:"mito",l:"Mito",d:"Devo raccontare\ntutto subito.",t:"ta",r:2},{k:"realta",l:"Realtà",d:"Racconti ciò che\nti senti, con i\ntuoi tempi.",t:"ta",r:3},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
+  {id:"PD",name:"Prima / Dopo",a:"sq",d:"Trasformazione",fields:[
+    {k:"prima",l:"Prima",d:"Mi sento sopraffatta\nda ogni piccola cosa.",t:"ta",r:2},{k:"dopo",l:"Dopo",d:"Riconosco le mie emozioni\ne le accolgo con\ngentilezza.",t:"ta",r:3},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
   {id:"TEST",name:"Testimonianza",a:"sq",d:"Recensione anonima",fields:[
     {k:"quote",l:"Testimonianza",d:"Non pensavo che parlare\npotesse fare così tanta\ndifferenza. Ora vedo le cose\ncon occhi nuovi.",t:"ta",r:4},{k:"author",l:"Autore",d:"— Paziente, 28 anni"},{k:"stars",l:"Stelle (1-5)",d:"5"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
   {id:"ESER",name:"Esercizio",a:"sq",d:"Tecnica pratica",fields:[
@@ -604,6 +606,19 @@ function draw(targetCanvas){
       rr(80,520,920,230,15,dk?P.secondary+"30":P.accent+"BB",dk?P.primary+"50":P.primary+"60");
       sf("bold",22,"sans");c.fillStyle=T1;c.textAlign="left";c.fillText("REALTÀ",120,558);
       ct("\u201C"+v("realta")+"\u201D",580,{s:26,col:T1,lh:1.3});
+      bottomBrand(H-52);
+      break;
+    }
+    case"PD":{
+      bg();corner("tr",.7);corner("bl",.7);
+      ct("Prima / Dopo",130,{s:34,col:T1});sep(165,T1,.25);
+      rr(80,230,920,200,15,cardFl,cardBd);
+      sf("bold",22,"sans");c.fillStyle=T3;c.textAlign="left";c.fillText("PRIMA",120,268);
+      ct("\u201C"+v("prima")+"\u201D",295,{w:"italic bold",s:26,col:T2,lh:1.3});
+      ct("\u2193",470,{w:"bold",s:34,f:"sans",col:T3});
+      rr(80,520,920,230,15,dk?P.secondary+"30":P.accent+"BB",dk?P.primary+"50":P.primary+"60");
+      sf("bold",22,"sans");c.fillStyle=T1;c.textAlign="left";c.fillText("DOPO",120,558);
+      ct("\u201C"+v("dopo")+"\u201D",580,{s:26,col:T1,lh:1.3});
       bottomBrand(H-52);
       break;
     }
@@ -906,7 +921,7 @@ function buildGal(){
     {label:"Carosello",ids:["A","B","CF"]},
     {label:"Post singoli",ids:["C","DOM","STAT","PA","FAQ"]},
     {label:"Servizi & liste",ids:["D","CK","ESER"]},
-    {label:"Engagement",ids:["MR","TEST"]},
+    {label:"Engagement",ids:["MR","PD","TEST"]},
     {label:"Profilo & contatti",ids:["BIO","CONT"]},
     {label:"Stories",ids:["G","GC"]}
   ];
