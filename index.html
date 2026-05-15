@@ -48,7 +48,7 @@ input,textarea{font-family:inherit;-webkit-appearance:none}
 .gal-hdr h1{font-size:18px;font-weight:600}
 .gal-hdr p{font-size:11px;opacity:.7;margin-top:3px}
 .ptabs{display:flex;gap:8px;padding:calc(env(safe-area-inset-top,50px)+10px) 16px 10px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
-.ptab{padding:8px 18px;border-radius:20px;font-size:13px;font-weight:500;background:#F0F0F0;color:#666;transition:.2s}
+.ptab{flex:1;padding:14px 18px;border-radius:24px;font-size:15px;font-weight:600;background:#F0F0F0;color:#666;transition:.2s;text-align:center}
 .ptab.on-s{background:var(--verde);color:#fff}.ptab.on-p{background:var(--lilla);color:#fff}
 .profilo-toggle{display:flex;align-items:center;gap:8px;padding:12px 0;margin-bottom:10px}
 .profilo-toggle label{font-size:11px;font-weight:500;color:var(--gray)}
@@ -303,29 +303,29 @@ const T=[
     {k:"title",l:"Titolo",d:"Ti è stato utile?"},{k:"body",l:"Corpo",d:"Salva questo post per rileggere\nquesti consigli quando ne avrai bisogno.\n\nCondividi con chi potrebbe\ntrovarlo utile.",t:"ta",r:4},{k:"cta",l:"Call to action",d:"📌 Salva   ↗️ Condividi   ❤️ Seguimi"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro — Psicoterapeuta CBT",brand:true}]},
   {id:"C",name:"Citazione / Frase",a:"sq",hasStory:true,d:"Frase o riflessione",fields:[
     {k:"quote",l:"Citazione",d:"Chiedere aiuto\nnon è debolezza.\nÈ consapevolezza.",t:"ta",r:3},{k:"author",l:"Autore",d:"Dott.ssa Ilenia Tagliaferro — Psicoterapeuta CBT"},{k:"firma",l:"Firma (riga 1)",d:"Dott.ssa Ilenia Tagliaferro",brand:true},{k:"firma2",l:"Firma (riga 2)",d:"Psicoterapeuta CBT",brand:true}]},
-  {id:"DOM",name:"Domanda",a:"sq",d:"Riflessione / engagement",fields:[
+  {id:"DOM",name:"Domanda",a:"sq",hasStory:true,d:"Riflessione / engagement",fields:[
     {k:"question",l:"Domanda",d:"Quando è stata\nl'ultima volta che\nti sei ascoltato\ndavvero?",t:"ta",r:4},{k:"cta",l:"Call to action",d:"Scrivilo nei commenti 💬"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
   {id:"D",name:"Servizio",a:"sq",hasStory:true,d:"Presentazione servizi",fields:[
     {k:"title",l:"Titolo",d:"Percorsi di gruppo\nper adolescenti",t:"ta",r:2},{k:"punti",l:"Punti elenco (uno per riga)",d:"Gruppi di 4-6 ragazzi, dai 13 ai 17 anni\nIncontri settimanali di 90 minuti\nCondotti da due psicoterapeute\nAnsia, autostima, relazioni tra pari",t:"ta",r:5},{k:"cta",l:"Call to action",d:"Scrivici per informazioni e iscrizioni"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
-  {id:"CK",name:"Checklist",a:"sq",d:"Segnali / lista",fields:[
+  {id:"CK",name:"Checklist",a:"sq",hasStory:true,d:"Segnali / lista",fields:[
     {k:"title",l:"Titolo",d:"5 segnali che potresti\naver bisogno di supporto",t:"ta",r:2},{k:"items",l:"Voci (una per riga)",d:"Ti senti in ansia quasi ogni giorno\nFai fatica a dormire o dormi troppo\nEviti situazioni che prima affrontavi\nTi senti solo/a anche in compagnia\nNon riesci a concentrarti",t:"ta",r:6},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
-  {id:"STAT",name:"Dato Statistico",a:"sq",d:"Sapevi che...?",fields:[
+  {id:"STAT",name:"Dato Statistico",a:"sq",hasStory:true,d:"Sapevi che...?",fields:[
     {k:"badge",l:"Badge",d:"SAPEVI CHE…?"},{k:"numero",l:"Numero / Dato",d:"1 su 4"},{k:"desc",l:"Descrizione",d:"italiani ha sofferto di un\ndisturbo d'ansia nel\ncorso della vita.",t:"ta",r:3},{k:"fonte",l:"Fonte",d:"Fonte: ISTAT, 2023"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
-  {id:"PA",name:"Prima / Dopo",a:"sq",d:"Pensiero CBT",fields:[
+  {id:"PA",name:"Prima / Dopo",a:"sq",hasStory:true,d:"Pensiero CBT",fields:[
     {k:"prima_l",l:"Etichetta Prima",d:"PENSIERO AUTOMATICO"},{k:"prima",l:"Prima",d:"Devo essere\nperfetto in tutto.",t:"ta",r:2},{k:"dopo_l",l:"Etichetta Dopo",d:"PENSIERO FUNZIONALE"},{k:"dopo",l:"Dopo",d:"Posso fare del mio\nmeglio, e questo basta.",t:"ta",r:2},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
-  {id:"MR",name:"Mito vs Realtà",a:"sq",d:"Format virale",fields:[
+  {id:"MR",name:"Mito vs Realtà",a:"sq",hasStory:true,d:"Format virale",fields:[
     {k:"mito",l:"Mito",d:"Devo raccontare\ntutto subito.",t:"ta",r:2},{k:"realta",l:"Realtà",d:"Racconti ciò che\nti senti, con i\ntuoi tempi.",t:"ta",r:3},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
-  {id:"PD",name:"Prima / Dopo",a:"sq",d:"Trasformazione",fields:[
+  {id:"PD",name:"Prima / Dopo",a:"sq",hasStory:true,d:"Trasformazione",fields:[
     {k:"prima",l:"Prima",d:"Mi sento sopraffatta\nda ogni piccola cosa.",t:"ta",r:2},{k:"dopo",l:"Dopo",d:"Riconosco le mie emozioni\ne le accolgo con\ngentilezza.",t:"ta",r:3},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
-  {id:"TEST",name:"Testimonianza",a:"sq",d:"Recensione anonima",fields:[
+  {id:"TEST",name:"Testimonianza",a:"sq",hasStory:true,d:"Recensione anonima",fields:[
     {k:"quote",l:"Testimonianza",d:"Non pensavo che parlare\npotesse fare così tanta\ndifferenza. Ora vedo le cose\ncon occhi nuovi.",t:"ta",r:4},{k:"author",l:"Autore",d:"— Paziente, 28 anni"},{k:"stars",l:"Stelle (1-5)",d:"5"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
-  {id:"ESER",name:"Esercizio",a:"sq",d:"Tecnica pratica",fields:[
+  {id:"ESER",name:"Esercizio",a:"sq",hasStory:true,d:"Tecnica pratica",fields:[
     {k:"title",l:"Titolo",d:"Tecnica di respirazione\n4-7-8",t:"ta",r:2},{k:"steps",l:"Passaggi (uno per riga)",d:"Inspira dal naso per 4 secondi\nTrattieni il respiro per 7 secondi\nEspira dalla bocca per 8 secondi\nRipeti per 3-4 cicli",t:"ta",r:5},{k:"nota",l:"Nota finale",d:"Pratica questa tecnica ogni sera prima di dormire"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
-  {id:"FAQ",name:"Domanda & Risposta",a:"sq",d:"FAQ / Q&A",fields:[
+  {id:"FAQ",name:"Domanda & Risposta",a:"sq",hasStory:true,d:"FAQ / Q&A",fields:[
     {k:"domanda",l:"Domanda",d:"Quanto dura un\npercorso di psicoterapia?",t:"ta",r:2},{k:"risposta",l:"Risposta",d:"Non esiste una durata standard. Dipende dagli obiettivi, dalla complessità della situazione e dal ritmo di ciascuno.\n\nIn media, un percorso CBT dura 15-20 sedute.",t:"ta",r:5},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
-  {id:"BIO",name:"Chi sono",a:"sq",d:"Presentazione",fields:[
+  {id:"BIO",name:"Chi sono",a:"sq",hasStory:true,d:"Presentazione",fields:[
     {k:"nome",l:"Nome",d:"Dott.ssa Ilenia Tagliaferro"},{k:"titolo",l:"Titolo professionale",d:"Psicoterapeuta Cognitivo-Comportamentale"},{k:"bio",l:"Bio",d:"Mi occupo di ansia, disturbi dell'umore e gestione dello stress.\n\nCredo che chiedere aiuto sia il primo atto di cura verso sé stessi.",t:"ta",r:4},{k:"dettagli",l:"Dettagli (uno per riga)",d:"📍 Brescia e online\n🎓 Specializzata in CBT\n📞 Primo colloquio gratuito",t:"ta",r:3},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
-  {id:"CONT",name:"Contatti",a:"sq",d:"Info e contatti",fields:[
+  {id:"CONT",name:"Contatti",a:"sq",hasStory:true,d:"Info e contatti",fields:[
     {k:"title",l:"Titolo",d:"Prenota un colloquio"},{k:"items",l:"Contatti (uno per riga)",d:"📞  030 123 4567\n📧  info@psicheholos.it\n📍  Via Roma 10, Brescia\n🌐  www.psicheholos.it\n📱  @psicheholos",t:"ta",r:6},{k:"cta",l:"Call to action",d:"Il primo colloquio conoscitivo è gratuito"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
   {id:"G",name:"Story",a:"st",d:"Story 9:16",fields:[
     {k:"badge",l:"Badge",d:"CONSIGLIO DELLA SETTIMANA"},{k:"title",l:"Titolo",d:"Ascolta per capire,\nnon per rispondere",t:"ta",r:2},{k:"body",l:"Corpo",d:"Quando qualcuno ti parla di un momento difficile, la cosa più importante è far sentire la tua presenza.\n\nNon serve avere tutte le risposte.",t:"ta",r:4},{k:"cta",l:"Call to action",d:"Salva questo consiglio ⬆️"},{k:"firma",l:"Firma (riga 1)",d:"Dott.ssa Ilenia Tagliaferro",brand:true},{k:"firma2",l:"Firma (riga 2)",d:"Psicoterapeuta CBT • Brescia",brand:true}]},
@@ -672,29 +672,57 @@ function draw(targetCanvas){
       break;
     }
     case"MR":{
-      bg();corner("tr",.7);corner("bl",.7);
-      ct("Mito vs Realtà",130,{s:34,col:T1});sep(165,T1,.25);
-      rr(80,230,920,200,15,cardFl,cardBd);
-      sf("bold",22,"sans");c.fillStyle=T3;c.textAlign="left";c.fillText("MITO",120,268);
-      ct("\u201C"+v("mito")+"\u201D",295,{w:"italic bold",s:26,col:T2,lh:1.3});
-      ct("\u2193",470,{w:"bold",s:34,f:"sans",col:T3});
-      rr(80,520,920,230,15,dk?P.secondary+"30":P.accent+"BB",dk?P.primary+"50":P.primary+"60");
-      sf("bold",22,"sans");c.fillStyle=T1;c.textAlign="left";c.fillText("REALTÀ",120,558);
-      ct("\u201C"+v("realta")+"\u201D",580,{s:26,col:T1,lh:1.3});
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        bg();corner("tr",.9);corner("bl",.9);
+        ct("Mito vs Realtà",200,{s:40,col:T1});sep(245,T1,.25);
+        rr(80,340,920,320,18,cardFl,cardBd);
+        sf("bold",26,"sans");c.fillStyle=T3;c.textAlign="left";c.fillText("MITO",120,400);
+        ct("\u201C"+v("mito")+"\u201D",510,{w:"italic bold",s:34,col:T2,lh:1.3,mw:880});
+        ct("\u2193",770,{w:"bold",s:54,f:"sans",col:T3});
+        rr(80,860,920,380,18,dk?P.secondary+"30":P.accent+"BB",dk?P.primary+"50":P.primary+"60");
+        sf("bold",26,"sans");c.fillStyle=T1;c.textAlign="left";c.fillText("REALTÀ",120,920);
+        ct("\u201C"+v("realta")+"\u201D",1020,{s:34,col:T1,lh:1.3,mw:880});
+        bottomBrandStory();
+      }else{
+        bg();corner("tr",.7);corner("bl",.7);
+        ct("Mito vs Realtà",130,{s:34,col:T1});sep(165,T1,.25);
+        rr(80,230,920,200,15,cardFl,cardBd);
+        sf("bold",22,"sans");c.fillStyle=T3;c.textAlign="left";c.fillText("MITO",120,268);
+        ct("\u201C"+v("mito")+"\u201D",295,{w:"italic bold",s:26,col:T2,lh:1.3});
+        ct("\u2193",470,{w:"bold",s:34,f:"sans",col:T3});
+        rr(80,520,920,230,15,dk?P.secondary+"30":P.accent+"BB",dk?P.primary+"50":P.primary+"60");
+        sf("bold",22,"sans");c.fillStyle=T1;c.textAlign="left";c.fillText("REALTÀ",120,558);
+        ct("\u201C"+v("realta")+"\u201D",580,{s:26,col:T1,lh:1.3});
+        bottomBrand(H-52);
+      }
       break;
     }
     case"PD":{
-      bg();corner("tr",.7);corner("bl",.7);
-      ct("Prima / Dopo",130,{s:34,col:T1});sep(165,T1,.25);
-      rr(80,230,920,200,15,cardFl,cardBd);
-      sf("bold",22,"sans");c.fillStyle=T3;c.textAlign="left";c.fillText("PRIMA",120,268);
-      ct("\u201C"+v("prima")+"\u201D",295,{w:"italic bold",s:26,col:T2,lh:1.3});
-      ct("\u2193",470,{w:"bold",s:34,f:"sans",col:T3});
-      rr(80,520,920,230,15,dk?P.secondary+"30":P.accent+"BB",dk?P.primary+"50":P.primary+"60");
-      sf("bold",22,"sans");c.fillStyle=T1;c.textAlign="left";c.fillText("DOPO",120,558);
-      ct("\u201C"+v("dopo")+"\u201D",580,{s:26,col:T1,lh:1.3});
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        bg();corner("tr",.9);corner("bl",.9);
+        ct("Prima / Dopo",200,{s:40,col:T1});sep(245,T1,.25);
+        rr(80,340,920,320,18,cardFl,cardBd);
+        sf("bold",26,"sans");c.fillStyle=T3;c.textAlign="left";c.fillText("PRIMA",120,400);
+        ct("\u201C"+v("prima")+"\u201D",510,{w:"italic bold",s:34,col:T2,lh:1.3,mw:880});
+        ct("\u2193",770,{w:"bold",s:54,f:"sans",col:T3});
+        rr(80,860,920,380,18,dk?P.secondary+"30":P.accent+"BB",dk?P.primary+"50":P.primary+"60");
+        sf("bold",26,"sans");c.fillStyle=T1;c.textAlign="left";c.fillText("DOPO",120,920);
+        ct("\u201C"+v("dopo")+"\u201D",1020,{s:34,col:T1,lh:1.3,mw:880});
+        bottomBrandStory();
+      }else{
+        bg();corner("tr",.7);corner("bl",.7);
+        ct("Prima / Dopo",130,{s:34,col:T1});sep(165,T1,.25);
+        rr(80,230,920,200,15,cardFl,cardBd);
+        sf("bold",22,"sans");c.fillStyle=T3;c.textAlign="left";c.fillText("PRIMA",120,268);
+        ct("\u201C"+v("prima")+"\u201D",295,{w:"italic bold",s:26,col:T2,lh:1.3});
+        ct("\u2193",470,{w:"bold",s:34,f:"sans",col:T3});
+        rr(80,520,920,230,15,dk?P.secondary+"30":P.accent+"BB",dk?P.primary+"50":P.primary+"60");
+        sf("bold",22,"sans");c.fillStyle=T1;c.textAlign="left";c.fillText("DOPO",120,558);
+        ct("\u201C"+v("dopo")+"\u201D",580,{s:26,col:T1,lh:1.3});
+        bottomBrand(H-52);
+      }
       break;
     }
     case"CF":{
@@ -719,167 +747,340 @@ function draw(targetCanvas){
       break;
     }
     case"DOM":{
-      dk?bgDark():(fill(P.bg),blob(300,300,300,P.accent),blob(750,750,260,P.light));
-      corner("tr",1.2);corner("bl",1);
-      sf("bold",140,"serif");c.fillStyle=T1+"30";c.textAlign="center";c.fillText("?",W/2,250);
-      ct(v("question"),420,{w:"italic bold",s:40,col:T1,lh:1.4});
-      sep(750,T3,.25);
-      ct(v("cta"),810,{w:"500",s:20,f:"sans",col:T3});
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        dk?bgDark():(fill(P.bg),blob(300,500,400,P.accent),blob(750,1400,320,P.light),blob(150,1100,250,P.bg));
+        corner("tr",1.4);corner("bl",1.2);
+        sf("bold",240,"serif");c.fillStyle=T1+"30";c.textAlign="center";c.fillText("?",W/2,500);
+        ct(v("question"),780,{w:"italic bold",s:54,col:T1,lh:1.4,mw:920});
+        sep(1280,T3,.25);
+        ct(v("cta"),1360,{w:"500",s:26,f:"sans",col:T3});
+        bottomBrandStory();
+      }else{
+        dk?bgDark():(fill(P.bg),blob(300,300,300,P.accent),blob(750,750,260,P.light));
+        corner("tr",1.2);corner("bl",1);
+        sf("bold",140,"serif");c.fillStyle=T1+"30";c.textAlign="center";c.fillText("?",W/2,250);
+        ct(v("question"),420,{w:"italic bold",s:40,col:T1,lh:1.4});
+        sep(750,T3,.25);
+        ct(v("cta"),810,{w:"500",s:20,f:"sans",col:T3});
+        bottomBrand(H-52);
+      }
       break;
     }
     case"CK":{
-      dk?bgDark():(fill(P.bg),c.fillStyle=P.accent,c.fillRect(0,0,W,320),blob(200,120,180,P.light),blob(800,180,140,P.bg));
-      if(dk){c.fillStyle=hdrBg;c.fillRect(0,0,W,320);blob(200,120,180,P.primary);blob(800,180,140,P.dark);}
-      corner("tr",.6);corner("tl",.3);
-      ct(v("title"),140,{s:36,col:"#FFFFFF",lh:1.3});
-      c.fillStyle=T1;c.fillRect(0,318,W,4);
-      var items=(v("items")||"").split("\n").filter(p=>p.trim()),
-          iFS=22,dotX=75,txtX=115,maxW=W-txtX-60,
-          avail=H-360-120,gap=items.length>1?Math.min(75,Math.max(45,avail/items.length)):75,
-          iy=380;
-      items.forEach((it,idx)=>{
-        sf("normal",iFS,"sans");c.textAlign="left";
-        var lines=[],ln="";
-        it.split(" ").forEach(wd=>{var test=ln?ln+" "+wd:wd;if(c.measureText(test).width>maxW){lines.push(ln);ln=wd}else ln=test});
-        if(ln)lines.push(ln);
-        var ckY=iy-iFS*0.3;
-        rr(dotX-14,ckY-14,28,28,6,T3);
-        sf("bold",18,"sans");c.fillStyle="#FFFFFF";c.textAlign="center";c.fillText("✓",dotX,ckY+7);
-        c.fillStyle=T2;c.textAlign="left";
-        lines.forEach(l=>{c.fillText(l,txtX,iy);iy+=iFS*1.45});
-        iy+=gap-iFS*1.45;
-      });
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        dk?bgDark():(fill(P.bg),c.fillStyle=P.accent,c.fillRect(0,0,W,440),blob(200,200,250,P.light),blob(800,260,200,P.bg));
+        if(dk){c.fillStyle=hdrBg;c.fillRect(0,0,W,440);blob(200,200,250,P.primary);blob(800,260,200,P.dark);}
+        corner("tr",.8);corner("tl",.5);
+        ct(v("title"),240,{s:52,col:"#FFFFFF",lh:1.3});
+        c.fillStyle=T1;c.fillRect(0,438,W,5);
+        var itemsS=(v("items")||"").split("\n").filter(p=>p.trim()),
+            iFSs=30,dotXs=110,txtXs=180,maxWs=W-txtXs-80,
+            availS=H-540-220,gapS=itemsS.length>1?Math.min(110,Math.max(70,availS/itemsS.length)):110,
+            iyS=560;
+        itemsS.forEach((it,idx)=>{
+          sf("normal",iFSs,"sans");c.textAlign="left";
+          var lines=[],ln="";
+          it.split(" ").forEach(wd=>{var test=ln?ln+" "+wd:wd;if(c.measureText(test).width>maxWs){lines.push(ln);ln=wd}else ln=test});
+          if(ln)lines.push(ln);
+          var ckY=iyS-iFSs*0.3;
+          rr(dotXs-20,ckY-20,40,40,9,T3);
+          sf("bold",24,"sans");c.fillStyle="#FFFFFF";c.textAlign="center";c.fillText("✓",dotXs,ckY+9);
+          c.fillStyle=T2;c.textAlign="left";
+          lines.forEach(l=>{c.fillText(l,txtXs,iyS);iyS+=iFSs*1.45});
+          iyS+=gapS-iFSs*1.45;
+        });
+        bottomBrandStory();
+      }else{
+        dk?bgDark():(fill(P.bg),c.fillStyle=P.accent,c.fillRect(0,0,W,320),blob(200,120,180,P.light),blob(800,180,140,P.bg));
+        if(dk){c.fillStyle=hdrBg;c.fillRect(0,0,W,320);blob(200,120,180,P.primary);blob(800,180,140,P.dark);}
+        corner("tr",.6);corner("tl",.3);
+        ct(v("title"),140,{s:36,col:"#FFFFFF",lh:1.3});
+        c.fillStyle=T1;c.fillRect(0,318,W,4);
+        var items=(v("items")||"").split("\n").filter(p=>p.trim()),
+            iFS=22,dotX=75,txtX=115,maxW=W-txtX-60,
+            avail=H-360-120,gap=items.length>1?Math.min(75,Math.max(45,avail/items.length)):75,
+            iy=380;
+        items.forEach((it,idx)=>{
+          sf("normal",iFS,"sans");c.textAlign="left";
+          var lines=[],ln="";
+          it.split(" ").forEach(wd=>{var test=ln?ln+" "+wd:wd;if(c.measureText(test).width>maxW){lines.push(ln);ln=wd}else ln=test});
+          if(ln)lines.push(ln);
+          var ckY=iy-iFS*0.3;
+          rr(dotX-14,ckY-14,28,28,6,T3);
+          sf("bold",18,"sans");c.fillStyle="#FFFFFF";c.textAlign="center";c.fillText("✓",dotX,ckY+7);
+          c.fillStyle=T2;c.textAlign="left";
+          lines.forEach(l=>{c.fillText(l,txtX,iy);iy+=iFS*1.45});
+          iy+=gap-iFS*1.45;
+        });
+        bottomBrand(H-52);
+      }
       break;
     }
     case"STAT":{
-      bg();corner("tr",1);corner("bl",.8);
-      rr(W/2-200,110,400,48,24,T1);
-      ct(v("badge"),143,{w:"600",s:18,f:"sans",col:dk?P.dark:"#FFFFFF"});
-      ct(v("numero"),400,{w:"bold",s:120,col:T1});
-      sep(470,T3,.3);
-      ct(v("desc"),540,{w:"normal",s:28,f:"sans",col:T2,lh:1.5});
-      sf("300",16,"sans");c.fillStyle=T3;c.textAlign="center";c.fillText(v("fonte"),W/2,H-100);
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        bg();corner("tr",1.2);corner("bl",1);
+        rr(W/2-250,220,500,60,30,T1);
+        ct(v("badge"),262,{w:"600",s:22,f:"sans",col:dk?P.dark:"#FFFFFF"});
+        ct(v("numero"),720,{w:"bold",s:180,col:T1});
+        sep(820,T3,.3);
+        ct(v("desc"),920,{w:"normal",s:34,f:"sans",col:T2,lh:1.5,mw:900});
+        sf("300",20,"sans");c.fillStyle=T3;c.textAlign="center";c.fillText(v("fonte"),W/2,H-180);
+        bottomBrandStory();
+      }else{
+        bg();corner("tr",1);corner("bl",.8);
+        rr(W/2-200,110,400,48,24,T1);
+        ct(v("badge"),143,{w:"600",s:18,f:"sans",col:dk?P.dark:"#FFFFFF"});
+        ct(v("numero"),400,{w:"bold",s:120,col:T1});
+        sep(470,T3,.3);
+        ct(v("desc"),540,{w:"normal",s:28,f:"sans",col:T2,lh:1.5});
+        sf("300",16,"sans");c.fillStyle=T3;c.textAlign="center";c.fillText(v("fonte"),W/2,H-100);
+        bottomBrand(H-52);
+      }
       break;
     }
     case"PA":{
-      dk?bgDark():(fill(P.bg),blob(200,300,260,P.accent),blob(800,700,240,P.light));
-      corner("tr",.8);corner("bl",.6);
-      ct("Prima / Dopo",100,{s:34,col:T3,f:"sans"});
-      var cardW=420,cardH=350,gapX=40,sx=(W-cardW*2-gapX)/2;
-      var ctAt=function(txt,cx,y,fs,col,maxW){
-        sf("bold",fs,"serif");c.fillStyle=col;c.textAlign="center";
-        txt.split("\n").forEach(ln=>{c.fillText(ln,cx,y);y+=fs*1.4});
-      };
-      var c1bg=dk?"#99444430":"#FDECEC",c1bd=dk?"#BB666660":"#E8A0A0";
-      rr(sx,180,cardW,cardH,18,c1bg,c1bd);
-      sf("bold",16,"sans");c.fillStyle=dk?"#BB6666":c1bd;c.textAlign="center";c.fillText(v("prima_l"),sx+cardW/2,218);
-      var xc=sx+cardW/2,xy=280;
-      c.beginPath();c.moveTo(xc-16,xy-16);c.lineTo(xc+16,xy+16);c.moveTo(xc+16,xy-16);c.lineTo(xc-16,xy+16);
-      c.strokeStyle=dk?"#BB6666":c1bd;c.lineWidth=5;c.lineCap="round";c.stroke();
-      ctAt(v("prima"),sx+cardW/2,360,24,T2,cardW-60);
-      var c2bg=dk?P.primary+"55":P.pale,c2bd=T1;
-      rr(sx+cardW+gapX,180,cardW,cardH,18,c2bg,c2bd);
-      sf("bold",16,"sans");c.fillStyle=T1;c.textAlign="center";c.fillText(v("dopo_l"),sx+cardW+gapX+cardW/2,218);
-      var ck=sx+cardW+gapX+cardW/2;
-      c.beginPath();c.moveTo(ck-15,282);c.lineTo(ck-2,296);c.lineTo(ck+18,262);
-      c.strokeStyle=T1;c.lineWidth=5;c.lineCap="round";c.lineJoin="round";c.stroke();
-      ctAt(v("dopo"),sx+cardW+gapX+cardW/2,360,24,T1,cardW-60);
-      var arX=sx+cardW+gapX/2;
-      sf("bold",36,"sans");c.fillStyle=T3;c.textAlign="center";c.fillText("→",arX,360);
-      sep(620,T3,.25);
-      ct("Ristrutturazione cognitiva",670,{w:"300",s:18,f:"sans",col:T3});
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        dk?bgDark():(fill(P.bg),blob(200,500,320,P.accent),blob(800,1200,300,P.light));
+        corner("tr",.9);corner("bl",.7);
+        ct("Prima / Dopo",180,{s:42,col:T3,f:"sans"});
+        var cardWs=460,cardHs=520,gapXs=40,sxS=(W-cardWs*2-gapXs)/2;
+        var ctAtS=function(txt,cx,y,fs,col,maxW){
+          sf("bold",fs,"serif");c.fillStyle=col;c.textAlign="center";
+          txt.split("\n").forEach(ln=>{c.fillText(ln,cx,y);y+=fs*1.4});
+        };
+        var c1bgS=dk?"#99444430":"#FDECEC",c1bdS=dk?"#BB666660":"#E8A0A0";
+        rr(sxS,300,cardWs,cardHs,22,c1bgS,c1bdS);
+        sf("bold",22,"sans");c.fillStyle=dk?"#BB6666":c1bdS;c.textAlign="center";c.fillText(v("prima_l"),sxS+cardWs/2,360);
+        var xcS=sxS+cardWs/2,xyS=440;
+        c.beginPath();c.moveTo(xcS-22,xyS-22);c.lineTo(xcS+22,xyS+22);c.moveTo(xcS+22,xyS-22);c.lineTo(xcS-22,xyS+22);
+        c.strokeStyle=dk?"#BB6666":c1bdS;c.lineWidth=7;c.lineCap="round";c.stroke();
+        ctAtS(v("prima"),sxS+cardWs/2,560,32,T2,cardWs-80);
+        var c2bgS=dk?P.primary+"55":P.pale,c2bdS=T1;
+        rr(sxS+cardWs+gapXs,300,cardWs,cardHs,22,c2bgS,c2bdS);
+        sf("bold",22,"sans");c.fillStyle=T1;c.textAlign="center";c.fillText(v("dopo_l"),sxS+cardWs+gapXs+cardWs/2,360);
+        var ckS=sxS+cardWs+gapXs+cardWs/2;
+        c.beginPath();c.moveTo(ckS-22,442);c.lineTo(ckS-4,460);c.lineTo(ckS+26,408);
+        c.strokeStyle=T1;c.lineWidth=7;c.lineCap="round";c.lineJoin="round";c.stroke();
+        ctAtS(v("dopo"),sxS+cardWs+gapXs+cardWs/2,560,32,T1,cardWs-80);
+        var arXS=sxS+cardWs+gapXs/2;
+        sf("bold",56,"sans");c.fillStyle=T3;c.textAlign="center";c.fillText("→",arXS,560);
+        sep(960,T3,.25);
+        ct("Ristrutturazione cognitiva",1030,{w:"300",s:24,f:"sans",col:T3});
+        bottomBrandStory();
+      }else{
+        dk?bgDark():(fill(P.bg),blob(200,300,260,P.accent),blob(800,700,240,P.light));
+        corner("tr",.8);corner("bl",.6);
+        ct("Prima / Dopo",100,{s:34,col:T3,f:"sans"});
+        var cardW=420,cardH=350,gapX=40,sx=(W-cardW*2-gapX)/2;
+        var ctAt=function(txt,cx,y,fs,col,maxW){
+          sf("bold",fs,"serif");c.fillStyle=col;c.textAlign="center";
+          txt.split("\n").forEach(ln=>{c.fillText(ln,cx,y);y+=fs*1.4});
+        };
+        var c1bg=dk?"#99444430":"#FDECEC",c1bd=dk?"#BB666660":"#E8A0A0";
+        rr(sx,180,cardW,cardH,18,c1bg,c1bd);
+        sf("bold",16,"sans");c.fillStyle=dk?"#BB6666":c1bd;c.textAlign="center";c.fillText(v("prima_l"),sx+cardW/2,218);
+        var xc=sx+cardW/2,xy=280;
+        c.beginPath();c.moveTo(xc-16,xy-16);c.lineTo(xc+16,xy+16);c.moveTo(xc+16,xy-16);c.lineTo(xc-16,xy+16);
+        c.strokeStyle=dk?"#BB6666":c1bd;c.lineWidth=5;c.lineCap="round";c.stroke();
+        ctAt(v("prima"),sx+cardW/2,360,24,T2,cardW-60);
+        var c2bg=dk?P.primary+"55":P.pale,c2bd=T1;
+        rr(sx+cardW+gapX,180,cardW,cardH,18,c2bg,c2bd);
+        sf("bold",16,"sans");c.fillStyle=T1;c.textAlign="center";c.fillText(v("dopo_l"),sx+cardW+gapX+cardW/2,218);
+        var ck=sx+cardW+gapX+cardW/2;
+        c.beginPath();c.moveTo(ck-15,282);c.lineTo(ck-2,296);c.lineTo(ck+18,262);
+        c.strokeStyle=T1;c.lineWidth=5;c.lineCap="round";c.lineJoin="round";c.stroke();
+        ctAt(v("dopo"),sx+cardW+gapX+cardW/2,360,24,T1,cardW-60);
+        var arX=sx+cardW+gapX/2;
+        sf("bold",36,"sans");c.fillStyle=T3;c.textAlign="center";c.fillText("→",arX,360);
+        sep(620,T3,.25);
+        ct("Ristrutturazione cognitiva",670,{w:"300",s:18,f:"sans",col:T3});
+        bottomBrand(H-52);
+      }
       break;
     }
     case"TEST":{
-      dk?bgDark():(fill(P.accent),blob(300,300,250,P.light),blob(700,700,280,P.bg));
-      corner("tr");corner("bl");
-      var starN=Math.min(5,Math.max(0,parseInt(v("stars"))||5)),starY=180;
-      sf("normal",36,"sans");c.fillStyle=T3;c.textAlign="center";
-      c.fillText("★".repeat(starN)+"☆".repeat(5-starN),W/2,starY);
-      sf("bold",120,"serif");c.fillStyle=T4;c.textAlign="left";c.fillText("\u201C",80,310);
-      ct(v("quote"),380,{w:"italic",s:32,col:T1,lh:1.45});
-      sf("bold",120,"serif");c.fillStyle=T4;c.textAlign="right";c.fillText("\u201D",1000,660);
-      sep(720,T3,.2);
-      ct(v("author"),770,{w:"300",s:20,f:"sans",col:T2});
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        dk?bgDark():(fill(P.accent),blob(300,500,330,P.light),blob(750,1400,300,P.pale),blob(150,1100,250,P.bg));
+        corner("tr",1.2);corner("bl",.8);
+        var starNS=Math.min(5,Math.max(0,parseInt(v("stars"))||5)),starYS=380;
+        sf("normal",54,"sans");c.fillStyle=T3;c.textAlign="center";
+        c.fillText("★".repeat(starNS)+"☆".repeat(5-starNS),W/2,starYS);
+        sf("bold",180,"serif");c.fillStyle=T4;c.textAlign="left";c.fillText("\u201C",80,580);
+        ct(v("quote"),730,{w:"italic",s:42,col:T1,lh:1.45,mw:880});
+        sf("bold",180,"serif");c.fillStyle=T4;c.textAlign="right";c.fillText("\u201D",1000,1180);
+        sep(1280,T3,.2);
+        ct(v("author"),1350,{w:"300",s:28,f:"sans",col:T2});
+        bottomBrandStory();
+      }else{
+        dk?bgDark():(fill(P.accent),blob(300,300,250,P.light),blob(700,700,280,P.bg));
+        corner("tr");corner("bl");
+        var starN=Math.min(5,Math.max(0,parseInt(v("stars"))||5)),starY=180;
+        sf("normal",36,"sans");c.fillStyle=T3;c.textAlign="center";
+        c.fillText("★".repeat(starN)+"☆".repeat(5-starN),W/2,starY);
+        sf("bold",120,"serif");c.fillStyle=T4;c.textAlign="left";c.fillText("\u201C",80,310);
+        ct(v("quote"),380,{w:"italic",s:32,col:T1,lh:1.45});
+        sf("bold",120,"serif");c.fillStyle=T4;c.textAlign="right";c.fillText("\u201D",1000,660);
+        sep(720,T3,.2);
+        ct(v("author"),770,{w:"300",s:20,f:"sans",col:T2});
+        bottomBrand(H-52);
+      }
       break;
     }
     case"ESER":{
-      dk?bgDark():(fill(P.bg),c.fillStyle=P.accent,c.fillRect(0,0,W,340),blob(200,120,180,P.light),blob(800,180,150,P.bg));
-      if(dk){c.fillStyle=hdrBg;c.fillRect(0,0,W,340);blob(200,120,180,P.primary);blob(800,180,150,P.dark);}
-      corner("tr",.6);corner("tl",.3);
-      ct(v("title"),140,{s:36,col:"#FFFFFF",lh:1.3});
-      c.fillStyle=T1;c.fillRect(0,338,W,4);
-      var steps=(v("steps")||"").split("\n").filter(p=>p.trim()),
-          sFS=22,sDotX=75,sTxtX=115,sMaxW=W-sTxtX-60,
-          sAvail=H-380-140,sGap=steps.length>1?Math.min(80,Math.max(50,sAvail/steps.length)):80,
-          sy=400;
-      steps.forEach((st,i)=>{
-        sf("normal",sFS,"sans");c.textAlign="left";
-        var lines=[],ln="";
-        st.split(" ").forEach(wd=>{var test=ln?ln+" "+wd:wd;if(c.measureText(test).width>sMaxW){lines.push(ln);ln=wd}else ln=test});
-        if(ln)lines.push(ln);
-        var numY=sy-sFS*0.3;
-        rr(sDotX-16,numY-16,32,32,16,T1);
-        sf("bold",16,"sans");c.fillStyle=dk?P.dark:"#FFFFFF";c.textAlign="center";c.fillText(String(i+1),sDotX,numY+6);
-        c.fillStyle=T2;c.textAlign="left";sf("normal",sFS,"sans");
-        lines.forEach(l=>{c.fillText(l,sTxtX,sy);sy+=sFS*1.45});
-        sy+=sGap-sFS*1.45;
-      });
-      ct(v("nota"),Math.max(sy+10,870),{w:"italic 300",s:17,f:"sans",col:T3});
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        dk?bgDark():(fill(P.bg),c.fillStyle=P.accent,c.fillRect(0,0,W,460),blob(200,200,260,P.light),blob(800,260,200,P.bg));
+        if(dk){c.fillStyle=hdrBg;c.fillRect(0,0,W,460);blob(200,200,260,P.primary);blob(800,260,200,P.dark);}
+        corner("tr",.8);corner("tl",.5);
+        ct(v("title"),250,{s:50,col:"#FFFFFF",lh:1.3});
+        c.fillStyle=T1;c.fillRect(0,458,W,5);
+        var stepsS=(v("steps")||"").split("\n").filter(p=>p.trim()),
+            sFSs=30,sDotXs=110,sTxtXs=180,sMaxWs=W-sTxtXs-80,
+            sAvailS=H-580-250,sGapS=stepsS.length>1?Math.min(120,Math.max(75,sAvailS/stepsS.length)):120,
+            syS=600;
+        stepsS.forEach((st,i)=>{
+          sf("normal",sFSs,"sans");c.textAlign="left";
+          var lines=[],ln="";
+          st.split(" ").forEach(wd=>{var test=ln?ln+" "+wd:wd;if(c.measureText(test).width>sMaxWs){lines.push(ln);ln=wd}else ln=test});
+          if(ln)lines.push(ln);
+          var numY=syS-sFSs*0.3;
+          rr(sDotXs-22,numY-22,44,44,22,T1);
+          sf("bold",22,"sans");c.fillStyle=dk?P.dark:"#FFFFFF";c.textAlign="center";c.fillText(String(i+1),sDotXs,numY+8);
+          c.fillStyle=T2;c.textAlign="left";sf("normal",sFSs,"sans");
+          lines.forEach(l=>{c.fillText(l,sTxtXs,syS);syS+=sFSs*1.45});
+          syS+=sGapS-sFSs*1.45;
+        });
+        ct(v("nota"),Math.max(syS+20,1700),{w:"italic 300",s:22,f:"sans",col:T3});
+        bottomBrandStory();
+      }else{
+        dk?bgDark():(fill(P.bg),c.fillStyle=P.accent,c.fillRect(0,0,W,340),blob(200,120,180,P.light),blob(800,180,150,P.bg));
+        if(dk){c.fillStyle=hdrBg;c.fillRect(0,0,W,340);blob(200,120,180,P.primary);blob(800,180,150,P.dark);}
+        corner("tr",.6);corner("tl",.3);
+        ct(v("title"),140,{s:36,col:"#FFFFFF",lh:1.3});
+        c.fillStyle=T1;c.fillRect(0,338,W,4);
+        var steps=(v("steps")||"").split("\n").filter(p=>p.trim()),
+            sFS=22,sDotX=75,sTxtX=115,sMaxW=W-sTxtX-60,
+            sAvail=H-380-140,sGap=steps.length>1?Math.min(80,Math.max(50,sAvail/steps.length)):80,
+            sy=400;
+        steps.forEach((st,i)=>{
+          sf("normal",sFS,"sans");c.textAlign="left";
+          var lines=[],ln="";
+          st.split(" ").forEach(wd=>{var test=ln?ln+" "+wd:wd;if(c.measureText(test).width>sMaxW){lines.push(ln);ln=wd}else ln=test});
+          if(ln)lines.push(ln);
+          var numY=sy-sFS*0.3;
+          rr(sDotX-16,numY-16,32,32,16,T1);
+          sf("bold",16,"sans");c.fillStyle=dk?P.dark:"#FFFFFF";c.textAlign="center";c.fillText(String(i+1),sDotX,numY+6);
+          c.fillStyle=T2;c.textAlign="left";sf("normal",sFS,"sans");
+          lines.forEach(l=>{c.fillText(l,sTxtX,sy);sy+=sFS*1.45});
+          sy+=sGap-sFS*1.45;
+        });
+        ct(v("nota"),Math.max(sy+10,870),{w:"italic 300",s:17,f:"sans",col:T3});
+        bottomBrand(H-52);
+      }
       break;
     }
     case"FAQ":{
-      bg();corner("tr",.8);corner("bl",.6);
-      rr(W/2-28,80,56,56,28,T1);
-      sf("bold",30,"sans");c.fillStyle=dk?P.dark:"#FFFFFF";c.textAlign="center";c.fillText("?",W/2,110);
-      var qy=ct(v("domanda"),200,{w:"bold",s:34,col:T1,lh:1.35});
-      sep(qy+10,T3,.3);
-      rr(W/2-22,qy+30,44,44,22,T3);
-      sf("bold",24,"sans");c.fillStyle=dk?P.dark:"#FFFFFF";c.textAlign="center";c.fillText("A",W/2,qy+58);
-      lt(v("risposta"),100,qy+100,{s:22,col:T2,mw:880,lh:1.55});
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        bg();corner("tr",1);corner("bl",.8);
+        rr(W/2-40,180,80,80,40,T1);
+        sf("bold",42,"sans");c.fillStyle=dk?P.dark:"#FFFFFF";c.textAlign="center";c.fillText("?",W/2,228);
+        var qy=ct(v("domanda"),400,{w:"bold",s:48,col:T1,lh:1.35,mw:920});
+        sep(qy+25,T3,.3);
+        rr(W/2-30,qy+55,60,60,30,T3);
+        sf("bold",32,"sans");c.fillStyle=dk?P.dark:"#FFFFFF";c.textAlign="center";c.fillText("A",W/2,qy+96);
+        lt(v("risposta"),100,qy+180,{s:30,col:T2,mw:880,lh:1.55});
+        bottomBrandStory();
+      }else{
+        bg();corner("tr",.8);corner("bl",.6);
+        rr(W/2-28,80,56,56,28,T1);
+        sf("bold",30,"sans");c.fillStyle=dk?P.dark:"#FFFFFF";c.textAlign="center";c.fillText("?",W/2,110);
+        var qy=ct(v("domanda"),200,{w:"bold",s:34,col:T1,lh:1.35});
+        sep(qy+10,T3,.3);
+        rr(W/2-22,qy+30,44,44,22,T3);
+        sf("bold",24,"sans");c.fillStyle=dk?P.dark:"#FFFFFF";c.textAlign="center";c.fillText("A",W/2,qy+58);
+        lt(v("risposta"),100,qy+100,{s:22,col:T2,mw:880,lh:1.55});
+        bottomBrand(H-52);
+      }
       break;
     }
     case"BIO":{
-      dk?bgDark():(fill(P.bg));
-      c.fillStyle=dk?hdrBg:(P.accent+"DD");c.fillRect(0,0,W,380);
-      if(dk){blob(200,150,200,P.primary);blob(800,200,160,P.dark);}
-      else{blob(200,150,200,P.light);blob(800,200,160,P.bg);}
-      corner("tr",.8);corner("tl",.5);
-      c.beginPath();c.arc(W/2,180,70,0,Math.PI*2);c.fillStyle="rgba(255,255,255,.25)";c.fill();
-      sf("bold",40,"sans");c.fillStyle="#FFFFFF";c.textAlign="center";
-      var initials=(v("nome")||"").split(" ").map(w=>w[0]||"").join("").slice(0,2).toUpperCase();
-      c.fillText(initials,W/2,195);
-      ct(v("nome"),290,{s:34,col:"#FFFFFF"});
-      ct(v("titolo"),335,{w:"300",s:18,f:"sans",col:"#FFFFFF"});
-      c.fillStyle=T1;c.fillRect(0,378,W,4);
-      ct(v("bio"),460,{w:"normal",s:22,f:"sans",col:T2,lh:1.55,mw:860});
-      var dets=(v("dettagli")||"").split("\n").filter(p=>p.trim()),dy=740;
-      sf("normal",20,"sans");c.fillStyle=T2;c.textAlign="center";
-      dets.forEach(d=>{c.fillText(d,W/2,dy);dy+=38});
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        dk?bgDark():(fill(P.bg));
+        c.fillStyle=dk?hdrBg:(P.accent+"DD");c.fillRect(0,0,W,560);
+        if(dk){blob(200,250,260,P.primary);blob(800,300,220,P.dark);}
+        else{blob(200,250,260,P.light);blob(800,300,220,P.bg);}
+        corner("tr",1);corner("tl",.6);
+        c.beginPath();c.arc(W/2,270,100,0,Math.PI*2);c.fillStyle="rgba(255,255,255,.25)";c.fill();
+        sf("bold",58,"sans");c.fillStyle="#FFFFFF";c.textAlign="center";
+        var initialsS=(v("nome")||"").split(" ").map(w=>w[0]||"").join("").slice(0,2).toUpperCase();
+        c.fillText(initialsS,W/2,290);
+        ct(v("nome"),420,{s:46,col:"#FFFFFF"});
+        ct(v("titolo"),475,{w:"300",s:24,f:"sans",col:"#FFFFFF"});
+        c.fillStyle=T1;c.fillRect(0,558,W,5);
+        ct(v("bio"),720,{w:"normal",s:30,f:"sans",col:T2,lh:1.55,mw:880});
+        var detsS=(v("dettagli")||"").split("\n").filter(p=>p.trim()),dyS=1280;
+        sf("normal",28,"sans");c.fillStyle=T2;c.textAlign="center";
+        detsS.forEach(d=>{c.fillText(d,W/2,dyS);dyS+=52});
+        bottomBrandStory();
+      }else{
+        dk?bgDark():(fill(P.bg));
+        c.fillStyle=dk?hdrBg:(P.accent+"DD");c.fillRect(0,0,W,380);
+        if(dk){blob(200,150,200,P.primary);blob(800,200,160,P.dark);}
+        else{blob(200,150,200,P.light);blob(800,200,160,P.bg);}
+        corner("tr",.8);corner("tl",.5);
+        c.beginPath();c.arc(W/2,180,70,0,Math.PI*2);c.fillStyle="rgba(255,255,255,.25)";c.fill();
+        sf("bold",40,"sans");c.fillStyle="#FFFFFF";c.textAlign="center";
+        var initials=(v("nome")||"").split(" ").map(w=>w[0]||"").join("").slice(0,2).toUpperCase();
+        c.fillText(initials,W/2,195);
+        ct(v("nome"),290,{s:34,col:"#FFFFFF"});
+        ct(v("titolo"),335,{w:"300",s:18,f:"sans",col:"#FFFFFF"});
+        c.fillStyle=T1;c.fillRect(0,378,W,4);
+        ct(v("bio"),460,{w:"normal",s:22,f:"sans",col:T2,lh:1.55,mw:860});
+        var dets=(v("dettagli")||"").split("\n").filter(p=>p.trim()),dy=740;
+        sf("normal",20,"sans");c.fillStyle=T2;c.textAlign="center";
+        dets.forEach(d=>{c.fillText(d,W/2,dy);dy+=38});
+        bottomBrand(H-52);
+      }
       break;
     }
     case"CONT":{
-      bg();corner("tr",1);corner("bl",.8);
-      ct(v("title"),180,{s:44,col:T1});
-      sep(220,T1,.3);
-      var citems=(v("items")||"").split("\n").filter(p=>p.trim()),
-          cy=310;
-      citems.forEach(it=>{
-        rr(120,cy-28,W-240,55,12,cardFl,cardBd);
-        sf("normal",22,"sans");c.fillStyle=T2;c.textAlign="center";
-        c.fillText(it,W/2,cy+2);
-        cy+=72;
-      });
-      ct(v("cta"),Math.max(cy+20,850),{w:"500",s:20,f:"sans",col:T3});
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        bg();corner("tr",1.2);corner("bl",1);
+        ct(v("title"),280,{s:58,col:T1});
+        sep(340,T1,.3);
+        var citemsS=(v("items")||"").split("\n").filter(p=>p.trim()),
+            cyS=480;
+        citemsS.forEach(it=>{
+          rr(120,cyS-38,W-240,75,16,cardFl,cardBd);
+          sf("normal",30,"sans");c.fillStyle=T2;c.textAlign="center";
+          c.fillText(it,W/2,cyS+5);
+          cyS+=100;
+        });
+        ct(v("cta"),Math.max(cyS+30,1600),{w:"500",s:26,f:"sans",col:T3});
+        bottomBrandStory();
+      }else{
+        bg();corner("tr",1);corner("bl",.8);
+        ct(v("title"),180,{s:44,col:T1});
+        sep(220,T1,.3);
+        var citems=(v("items")||"").split("\n").filter(p=>p.trim()),
+            cy=310;
+        citems.forEach(it=>{
+          rr(120,cy-28,W-240,55,12,cardFl,cardBd);
+          sf("normal",22,"sans");c.fillStyle=T2;c.textAlign="center";
+          c.fillText(it,W/2,cy+2);
+          cy+=72;
+        });
+        ct(v("cta"),Math.max(cy+20,850),{w:"500",s:20,f:"sans",col:T3});
+        bottomBrand(H-52);
+      }
       break;
     }
     case"G":{
