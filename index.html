@@ -295,7 +295,7 @@ function updatePalettes(){
 //  TEMPLATES (unified — profilo switch changes colors)
 // ══════════════════════════════════════
 const T=[
-  {id:"A",name:"Copertina Carosello",a:"sq",d:"Prima slide",fields:[
+  {id:"A",name:"Copertina Carosello",a:"sq",hasStory:true,d:"Prima slide",fields:[
     {k:"title",l:"Titolo",d:"La prima seduta\npsicologica",t:"ta",r:2},{k:"subtitle",l:"Sottotitolo",d:"Cosa succede?"},{k:"slide",l:"N° slide",d:"1/8"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro — Psicoterapeuta CBT",brand:true}]},
   {id:"B",name:"Slide Interna",a:"sq",d:"Slide contenuto",fields:[
     {k:"title",l:"Titolo",d:"Non devi raccontare tutto"},{k:"body",l:"Corpo",d:"La prima seduta è uno spazio di conoscenza reciproca. Non c'è nessun obbligo di raccontare tutto subito.\n\nIl terapeuta ti accoglierà senza giudizio, ascoltando ciò che ti senti di condividere.",t:"ta",r:4},{k:"slide",l:"N° slide",d:"2/8"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
@@ -369,7 +369,7 @@ function drawLogo(ctx, cx, cy, h, img){
 function draw(targetCanvas){
   updatePalettes();
   const cv=targetCanvas||document.getElementById("cv");const t=gt();if(!cv||!t)return;
-  const isS=t.a==="st",W=1080,H=isS?1920:1080;
+  const isS=t.a==="st"||(format==="story"&&t.hasStory),W=1080,H=isS?1920:1080;
   cv.width=W;cv.height=H;const c=cv.getContext("2d");
   const studio=profilo==="studio",P=studio?V:L;
   const LOGO_H=80, LOGO_H_ST=90;
@@ -523,6 +523,20 @@ function draw(targetCanvas){
       ct(v("firma")||"",yPos+4,{w:"300",s:16,f:"sans",col:brCol});
     }
   };
+  // ── Story-specific bottom branding (1080×1920) ──
+  const bottomBrandStory=()=>{
+    const stBr=dk?P.accent:P.secondary;
+    if(showFirma&&showLogo){
+      ct(v("firma"),1700,{w:"300",s:17,f:"sans",col:stBr});
+      ct(v("firma2")||"",1735,{w:"300",s:13,f:"sans",col:T3});
+      logo(H-75,60);
+    }else if(showFirma){
+      ct(v("firma"),1730,{w:"300",s:19,f:"sans",col:stBr});
+      ct(v("firma2")||"",1768,{w:"300",s:14,f:"sans",col:T3});
+    }else if(showLogo){
+      logo(H-100,LOGO_H_ST);
+    }
+  };
 
   // Bg helpers
   const bgLight=()=>{fill(P.bg||P.white);blob(200,200,280,P.light);blob(800,150,240,P.accent);blob(500,800,320,P.light);blob(100,700,200,P.accent)};
@@ -541,12 +555,22 @@ function draw(targetCanvas){
 
   switch(t.id){
     case"A":{
-      bg();corner("tr",1.2);corner("bl",1.2);
-      var yy=ct(v("title"),380,{s:58,col:T1});
-      sep(yy+5,T1);
-      ct(v("subtitle"),yy+40,{w:"500",s:32,f:"sans",col:T3});
-      bottomBrand(H-52);
-      sf("300",16,"sans");c.fillStyle=T3;c.textAlign="right";c.fillText(v("slide"),W-35,35);
+      if(isS){
+        // ── Story (1080×1920) ──
+        bg();corner("tr",1.5);corner("bl",1.5);
+        sf("300",20,"sans");c.fillStyle=T3;c.textAlign="right";c.fillText(v("slide"),W-55,65);
+        var yy=ct(v("title"),720,{s:78,col:T1,mw:980});
+        sep(yy+25,T1,.4);
+        ct(v("subtitle"),yy+90,{w:"500",s:42,f:"sans",col:T3});
+        bottomBrandStory();
+      }else{
+        bg();corner("tr",1.2);corner("bl",1.2);
+        var yy=ct(v("title"),380,{s:58,col:T1});
+        sep(yy+5,T1);
+        ct(v("subtitle"),yy+40,{w:"500",s:32,f:"sans",col:T3});
+        bottomBrand(H-52);
+        sf("300",16,"sans");c.fillStyle=T3;c.textAlign="right";c.fillText(v("slide"),W-35,35);
+      }
       break;
     }
     case"B":{
@@ -921,7 +945,7 @@ function buildGal(){
     const btn=document.createElement("button");
     btn.className="ptab"+(format===f?" "+_onCls:"");
     btn.textContent=lbl;
-    btn.onclick=()=>{format=f;buildGal()};
+    btn.onclick=()=>{format=f;buildGal();if(sel)refreshEditor()};
     tabs.appendChild(btn);
   });
 
@@ -934,11 +958,14 @@ function buildGal(){
     {label:"Profilo & contatti",ids:["BIO","CONT"]},
     {label:"Stories",ids:["G","GC"]}
   ];
-  // Filter by selected format (post="sq", story="st")
-  const _ft=format==="post"?"sq":"st";
+  // Filter by selected format: post = sq only; story = st + sq with hasStory
   const groups=allGroups.map(grp=>({
     ...grp,
-    ids:grp.ids.filter(id=>{const tt=T.find(x=>x.id===id);return tt&&tt.a===_ft})
+    ids:grp.ids.filter(id=>{
+      const tt=T.find(x=>x.id===id);if(!tt)return false;
+      if(format==="post")return tt.a==="sq";
+      return tt.a==="st"||tt.hasStory;
+    })
   })).filter(grp=>grp.ids.length>0);
   groups.forEach(grp=>{
     const items=grp.ids.map(id=>T.find(t=>t.id===id)).filter(Boolean);
@@ -950,7 +977,7 @@ function buildGal(){
     const grid=document.createElement("div");grid.className="gg";
     items.forEach(t=>{
       const cd=document.createElement("button");cd.className="gc";
-      const isSt=t.a==="st";
+      const isSt=t.a==="st"||(format==="story"&&t.hasStory);
       cd.innerHTML=`<div class="thumb${isSt?" st-ratio":""}" id="th-${t.id}"><canvas></canvas></div><div class="gn">${t.name}</div><div class="gd">${t.d}</div>`;
       cd.onclick=()=>openEd(t.id);grid.appendChild(cd);
     });
@@ -990,7 +1017,9 @@ function refreshEditor(){
   const t=gt();if(!t)return;
   const studio=profilo==="studio",ac=V.primary,ac2=V.secondary;
   const pl=studio?"@psicheholos":"@dott.ssa_ileniatagliaferro";
-  document.getElementById("etb").innerHTML=`<button class="bbk" id="btnBack"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Template</button><div class="inf"><div class="nm" style="color:${ac}">${t.name}</div><div class="dm">${pl} · ${t.a==="st"?"1080×1920":"1080×1080"}</div></div>`;
+  const isStoryNow=t.a==="st"||(format==="story"&&t.hasStory);
+  const dimStr=isStoryNow?"1080×1920":"1080×1080";
+  document.getElementById("etb").innerHTML=`<button class="bbk" id="btnBack"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Template</button><div class="inf"><div class="nm" style="color:${ac}">${t.name}</div><div class="dm">${pl} · ${dimStr}</div></div>`;
   document.getElementById("btnBack").addEventListener("click",closeEd);
   document.getElementById("btnBack").addEventListener("touchend",function(e){e.preventDefault();closeEd()},{passive:false});
 
@@ -1073,7 +1102,7 @@ function refreshEditor(){
 
   // Desktop sidebar
   const df=document.getElementById("deskFields");
-  df.innerHTML=`<div class="df-hdr"><div class="badge" style="background:${t.col||ac}">${t.em||t.id}</div><div><div class="nm" style="color:${ac}">${t.name}</div><div class="dm">${pl} · ${t.a==="st"?"1080×1920":"1080×1080"}</div></div></div><div class="df-body" id="dfBody"></div><div class="df-actions" id="dfActs"></div>`;
+  df.innerHTML=`<div class="df-hdr"><div class="badge" style="background:${t.col||ac}">${t.em||t.id}</div><div><div class="nm" style="color:${ac}">${t.name}</div><div class="dm">${pl} · ${dimStr}</div></div></div><div class="df-body" id="dfBody"></div><div class="df-actions" id="dfActs"></div>`;
   buildFields(document.getElementById("dfBody"));
 
   // Desktop actions
