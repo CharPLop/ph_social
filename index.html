@@ -297,15 +297,15 @@ function updatePalettes(){
 const T=[
   {id:"A",name:"Copertina Carosello",a:"sq",hasStory:true,d:"Prima slide",fields:[
     {k:"title",l:"Titolo",d:"La prima seduta\npsicologica",t:"ta",r:2},{k:"subtitle",l:"Sottotitolo",d:"Cosa succede?"},{k:"slide",l:"N° slide",d:"1/8"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro — Psicoterapeuta CBT",brand:true}]},
-  {id:"B",name:"Slide Interna",a:"sq",d:"Slide contenuto",fields:[
+  {id:"B",name:"Slide Interna",a:"sq",hasStory:true,d:"Slide contenuto",fields:[
     {k:"title",l:"Titolo",d:"Non devi raccontare tutto"},{k:"body",l:"Corpo",d:"La prima seduta è uno spazio di conoscenza reciproca. Non c'è nessun obbligo di raccontare tutto subito.\n\nIl terapeuta ti accoglierà senza giudizio, ascoltando ciò che ti senti di condividere.",t:"ta",r:4},{k:"slide",l:"N° slide",d:"2/8"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
-  {id:"CF",name:"Carosello Finale",a:"sq",d:"Ultima slide CTA",fields:[
+  {id:"CF",name:"Carosello Finale",a:"sq",hasStory:true,d:"Ultima slide CTA",fields:[
     {k:"title",l:"Titolo",d:"Ti è stato utile?"},{k:"body",l:"Corpo",d:"Salva questo post per rileggere\nquesti consigli quando ne avrai bisogno.\n\nCondividi con chi potrebbe\ntrovarlo utile.",t:"ta",r:4},{k:"cta",l:"Call to action",d:"📌 Salva   ↗️ Condividi   ❤️ Seguimi"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro — Psicoterapeuta CBT",brand:true}]},
-  {id:"C",name:"Citazione / Frase",a:"sq",d:"Frase o riflessione",fields:[
+  {id:"C",name:"Citazione / Frase",a:"sq",hasStory:true,d:"Frase o riflessione",fields:[
     {k:"quote",l:"Citazione",d:"Chiedere aiuto\nnon è debolezza.\nÈ consapevolezza.",t:"ta",r:3},{k:"author",l:"Autore",d:"Dott.ssa Ilenia Tagliaferro — Psicoterapeuta CBT"},{k:"firma",l:"Firma (riga 1)",d:"Dott.ssa Ilenia Tagliaferro",brand:true},{k:"firma2",l:"Firma (riga 2)",d:"Psicoterapeuta CBT",brand:true}]},
   {id:"DOM",name:"Domanda",a:"sq",d:"Riflessione / engagement",fields:[
     {k:"question",l:"Domanda",d:"Quando è stata\nl'ultima volta che\nti sei ascoltato\ndavvero?",t:"ta",r:4},{k:"cta",l:"Call to action",d:"Scrivilo nei commenti 💬"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
-  {id:"D",name:"Servizio",a:"sq",d:"Presentazione servizi",fields:[
+  {id:"D",name:"Servizio",a:"sq",hasStory:true,d:"Presentazione servizi",fields:[
     {k:"title",l:"Titolo",d:"Percorsi di gruppo\nper adolescenti",t:"ta",r:2},{k:"punti",l:"Punti elenco (uno per riga)",d:"Gruppi di 4-6 ragazzi, dai 13 ai 17 anni\nIncontri settimanali di 90 minuti\nCondotti da due psicoterapeute\nAnsia, autostima, relazioni tra pari",t:"ta",r:5},{k:"cta",l:"Call to action",d:"Scrivici per informazioni e iscrizioni"},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
   {id:"CK",name:"Checklist",a:"sq",d:"Segnali / lista",fields:[
     {k:"title",l:"Titolo",d:"5 segnali che potresti\naver bisogno di supporto",t:"ta",r:2},{k:"items",l:"Voci (una per riga)",d:"Ti senti in ansia quasi ogni giorno\nFai fatica a dormire o dormi troppo\nEviti situazioni che prima affrontavi\nTi senti solo/a anche in compagnia\nNon riesci a concentrarti",t:"ta",r:6},{k:"firma",l:"Firma",d:"Dott.ssa Ilenia Tagliaferro",brand:true}]},
@@ -574,50 +574,101 @@ function draw(targetCanvas){
       break;
     }
     case"B":{
-      dk?bgDark():fill(P.white);corner("tr",.5);
-      c.fillStyle=T1;c.fillRect(0,0,W,6);
-      var bty=ct(v("title"),130,{s:44,col:T1,f:"sans"});
-      sep(bty+10,T3+"90",.35);
-      ct(v("body"),bty+50,{w:"normal",s:30,f:"sans",col:T2,lh:1.5});
-      sf("300",16,"sans");c.fillStyle=T3;c.textAlign="right";c.fillText(v("slide"),W-40,H-35);
+      if(isS){
+        // ── Story (1080×1920) ──
+        dk?bgDark():fill(P.white);corner("tr",.7);
+        c.fillStyle=T1;c.fillRect(0,0,W,10);
+        var bty=ct(v("title"),260,{s:62,col:T1,f:"sans"});
+        sep(bty+25,T3+"90",.4);
+        ct(v("body"),bty+95,{w:"normal",s:34,f:"sans",col:T2,lh:1.55});
+        sf("300",20,"sans");c.fillStyle=T3;c.textAlign="right";c.fillText(v("slide"),W-50,H-150);
+        bottomBrandStory();
+      }else{
+        dk?bgDark():fill(P.white);corner("tr",.5);
+        c.fillStyle=T1;c.fillRect(0,0,W,6);
+        var bty=ct(v("title"),130,{s:44,col:T1,f:"sans"});
+        sep(bty+10,T3+"90",.35);
+        ct(v("body"),bty+50,{w:"normal",s:30,f:"sans",col:T2,lh:1.5});
+        sf("300",16,"sans");c.fillStyle=T3;c.textAlign="right";c.fillText(v("slide"),W-40,H-35);
+      }
       break;
     }
     case"C":{
-      dk?bgDark():fill(P.accent);
-      if(!dk){blob(300,300,250,P.light);blob(700,700,280,P.bg);blob(150,800,200,P.pale);}
-      corner("tr");corner("bl");corner("tl",.6);
-      sf("bold",110,"serif");c.fillStyle=T4;c.textAlign="left";c.fillText("\u201C",100,340);
-      ct(v("quote"),400,{w:"italic bold",s:34,col:T1});
-      sf("bold",110,"serif");c.fillStyle=T4;c.textAlign="right";c.fillText("\u201D",980,630);
-      ct("\u2014  "+v("author"),710,{w:"300",s:20,f:"sans",col:T2});
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        dk?bgDark():fill(P.accent);
+        if(!dk){blob(300,500,350,P.light);blob(750,1400,300,P.pale);blob(150,1100,250,P.bg);}
+        corner("tr",1.2);corner("bl",.8);corner("tl",.5);
+        sf("bold",180,"serif");c.fillStyle=T4;c.textAlign="left";c.fillText("\u201C",100,580);
+        ct(v("quote"),720,{w:"italic bold",s:46,col:T1,mw:860});
+        sf("bold",180,"serif");c.fillStyle=T4;c.textAlign="right";c.fillText("\u201D",980,1080);
+        sep(1160,T3,.2);
+        ct("\u2014  "+v("author"),1220,{w:"300",s:24,f:"sans",col:T2});
+        bottomBrandStory();
+      }else{
+        dk?bgDark():fill(P.accent);
+        if(!dk){blob(300,300,250,P.light);blob(700,700,280,P.bg);blob(150,800,200,P.pale);}
+        corner("tr");corner("bl");corner("tl",.6);
+        sf("bold",110,"serif");c.fillStyle=T4;c.textAlign="left";c.fillText("\u201C",100,340);
+        ct(v("quote"),400,{w:"italic bold",s:34,col:T1});
+        sf("bold",110,"serif");c.fillStyle=T4;c.textAlign="right";c.fillText("\u201D",980,630);
+        ct("\u2014  "+v("author"),710,{w:"300",s:20,f:"sans",col:T2});
+        bottomBrand(H-52);
+      }
       break;
     }
     case"D":{
-      dk?bgDark():(fill(P.bg),c.fillStyle=P.accent,c.fillRect(0,0,W,380),blob(200,150,180,P.light),blob(800,200,150,P.bg));
-      if(dk){c.fillStyle=hdrBg;c.fillRect(0,0,W,380);blob(200,150,180,P.primary);blob(800,200,150,P.dark);}
-      corner("tr",.7);corner("tl",.4);
-      ct(v("title"),160,{s:38,col:"#FFFFFF"});
-      c.fillStyle=T1;c.fillRect(0,378,W,4);
-      var punti=(v("punti")||"").split("\n").filter(p=>p.trim()),
-          bFS=22,bLH=1.45,dotR=8,dotX=85,txtX=115,maxTxtW=W-txtX-60,
-          totalH=punti.length*(bFS*bLH)+punti.length*18,
-          startY=420,availH=H-startY-180,
-          gap=punti.length>1?Math.min(80,Math.max(50,availH/punti.length)):80;
-      var py=startY;
-      punti.forEach(pt=>{
-        sf("normal",bFS,"sans");c.textAlign="left";c.fillStyle=T2;
-        var lines=[],ln="";
-        pt.split(" ").forEach(wd=>{var test=ln?ln+" "+wd:wd;if(c.measureText(test).width>maxTxtW){lines.push(ln);ln=wd}else ln=test});
-        if(ln)lines.push(ln);
-        var firstLineY=py,dotCY=firstLineY-bFS*0.3;
-        c.beginPath();c.arc(dotX,dotCY,dotR,0,Math.PI*2);c.fillStyle=T3;c.fill();
-        c.fillStyle=T2;c.textAlign="left";
-        lines.forEach((l,i)=>{c.fillText(l,txtX,py);py+=bFS*bLH});
-        py+=gap-bFS*bLH;
-      });
-      ct(v("cta"),Math.max(py+20,880),{w:"500",s:20,f:"sans",col:T3});
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        dk?bgDark():(fill(P.bg),c.fillStyle=P.accent,c.fillRect(0,0,W,540),blob(200,250,260,P.light),blob(800,300,200,P.bg));
+        if(dk){c.fillStyle=hdrBg;c.fillRect(0,0,W,540);blob(200,250,260,P.primary);blob(800,300,200,P.dark);}
+        corner("tr",.9);corner("tl",.5);
+        ct(v("title"),290,{s:56,col:"#FFFFFF",lh:1.3});
+        c.fillStyle=T1;c.fillRect(0,538,W,5);
+        var puntiS=(v("punti")||"").split("\n").filter(p=>p.trim()),
+            bFSs=30,bLHs=1.5,dotRs=11,dotXs=110,txtXs=160,maxTxtWs=W-txtXs-80,
+            startYs=660,availHs=H-startYs-260,
+            gapS=puntiS.length>1?Math.min(110,Math.max(75,availHs/puntiS.length)):110;
+        var pyS=startYs;
+        puntiS.forEach(pt=>{
+          sf("normal",bFSs,"sans");c.textAlign="left";c.fillStyle=T2;
+          var lines=[],ln="";
+          pt.split(" ").forEach(wd=>{var test=ln?ln+" "+wd:wd;if(c.measureText(test).width>maxTxtWs){lines.push(ln);ln=wd}else ln=test});
+          if(ln)lines.push(ln);
+          var firstLineY=pyS,dotCY=firstLineY-bFSs*0.3;
+          c.beginPath();c.arc(dotXs,dotCY,dotRs,0,Math.PI*2);c.fillStyle=T3;c.fill();
+          c.fillStyle=T2;c.textAlign="left";
+          lines.forEach(l=>{c.fillText(l,txtXs,pyS);pyS+=bFSs*bLHs});
+          pyS+=gapS-bFSs*bLHs;
+        });
+        ct(v("cta"),Math.max(pyS+30,1600),{w:"500",s:26,f:"sans",col:T3});
+        bottomBrandStory();
+      }else{
+        dk?bgDark():(fill(P.bg),c.fillStyle=P.accent,c.fillRect(0,0,W,380),blob(200,150,180,P.light),blob(800,200,150,P.bg));
+        if(dk){c.fillStyle=hdrBg;c.fillRect(0,0,W,380);blob(200,150,180,P.primary);blob(800,200,150,P.dark);}
+        corner("tr",.7);corner("tl",.4);
+        ct(v("title"),160,{s:38,col:"#FFFFFF"});
+        c.fillStyle=T1;c.fillRect(0,378,W,4);
+        var punti=(v("punti")||"").split("\n").filter(p=>p.trim()),
+            bFS=22,bLH=1.45,dotR=8,dotX=85,txtX=115,maxTxtW=W-txtX-60,
+            totalH=punti.length*(bFS*bLH)+punti.length*18,
+            startY=420,availH=H-startY-180,
+            gap=punti.length>1?Math.min(80,Math.max(50,availH/punti.length)):80;
+        var py=startY;
+        punti.forEach(pt=>{
+          sf("normal",bFS,"sans");c.textAlign="left";c.fillStyle=T2;
+          var lines=[],ln="";
+          pt.split(" ").forEach(wd=>{var test=ln?ln+" "+wd:wd;if(c.measureText(test).width>maxTxtW){lines.push(ln);ln=wd}else ln=test});
+          if(ln)lines.push(ln);
+          var firstLineY=py,dotCY=firstLineY-bFS*0.3;
+          c.beginPath();c.arc(dotX,dotCY,dotR,0,Math.PI*2);c.fillStyle=T3;c.fill();
+          c.fillStyle=T2;c.textAlign="left";
+          lines.forEach((l,i)=>{c.fillText(l,txtX,py);py+=bFS*bLH});
+          py+=gap-bFS*bLH;
+        });
+        ct(v("cta"),Math.max(py+20,880),{w:"500",s:20,f:"sans",col:T3});
+        bottomBrand(H-52);
+      }
       break;
     }
     case"MR":{
@@ -647,13 +698,24 @@ function draw(targetCanvas){
       break;
     }
     case"CF":{
-      bg();corner("tr",1);corner("bl",1);
-      ct(v("title"),240,{s:48,col:T1});
-      sep(290,T1,.3);
-      ct(v("body"),370,{w:"normal",s:26,f:"sans",col:T2,lh:1.55});
-      rr(W/2-320,680,640,65,33,T1+"18",T1+"40");
-      ct(v("cta"),723,{w:"600",s:22,f:"sans",col:T1});
-      bottomBrand(H-52);
+      if(isS){
+        // ── Story (1080×1920) ──
+        bg();corner("tr",1.3);corner("bl",1.1);
+        ct(v("title"),520,{s:64,col:T1});
+        sep(610,T1,.35);
+        ct(v("body"),720,{w:"normal",s:32,f:"sans",col:T2,lh:1.55,mw:900});
+        rr(W/2-380,1320,760,95,48,T1+"22",T1+"50");
+        ct(v("cta"),1378,{w:"600",s:28,f:"sans",col:T1});
+        bottomBrandStory();
+      }else{
+        bg();corner("tr",1);corner("bl",1);
+        ct(v("title"),240,{s:48,col:T1});
+        sep(290,T1,.3);
+        ct(v("body"),370,{w:"normal",s:26,f:"sans",col:T2,lh:1.55});
+        rr(W/2-320,680,640,65,33,T1+"18",T1+"40");
+        ct(v("cta"),723,{w:"600",s:22,f:"sans",col:T1});
+        bottomBrand(H-52);
+      }
       break;
     }
     case"DOM":{
