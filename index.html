@@ -203,7 +203,7 @@ logoPImg.onload = () => { logoPReady = true; if(sel) draw(); };
 // ══════════════════════════════════════
 //  STATE
 // ══════════════════════════════════════
-let sel=null,vals={},profilo="studio",colore="standard",brandMode="logo",darkMode=false,activeField=null,_exporting=false;
+let sel=null,vals={},profilo="studio",colore="standard",brandMode="logo",darkMode=false,activeField=null,_exporting=false,format="post";
 const gt=()=>T.find(t=>t.id===sel);
 // Dynamic defaults for firma based on profilo
 const FIRMA_D={
@@ -915,9 +915,18 @@ function buildGal(){
   updatePalettes();
   const tabs=document.getElementById("tabs");
   tabs.innerHTML="";
+  // ── Format toggle: Post / Story ──
+  const _onCls=profilo==="studio"?"on-s":"on-p";
+  [["post","📱 Post"],["story","📲 Story"]].forEach(([f,lbl])=>{
+    const btn=document.createElement("button");
+    btn.className="ptab"+(format===f?" "+_onCls:"");
+    btn.textContent=lbl;
+    btn.onclick=()=>{format=f;buildGal()};
+    tabs.appendChild(btn);
+  });
 
   const g=document.getElementById("gal");g.innerHTML="";
-  const groups=[
+  const allGroups=[
     {label:"Carosello",ids:["A","B","CF"]},
     {label:"Post singoli",ids:["C","DOM","STAT","PA","FAQ"]},
     {label:"Servizi & liste",ids:["D","CK","ESER"]},
@@ -925,6 +934,12 @@ function buildGal(){
     {label:"Profilo & contatti",ids:["BIO","CONT"]},
     {label:"Stories",ids:["G","GC"]}
   ];
+  // Filter by selected format (post="sq", story="st")
+  const _ft=format==="post"?"sq":"st";
+  const groups=allGroups.map(grp=>({
+    ...grp,
+    ids:grp.ids.filter(id=>{const tt=T.find(x=>x.id===id);return tt&&tt.a===_ft})
+  })).filter(grp=>grp.ids.length>0);
   groups.forEach(grp=>{
     const items=grp.ids.map(id=>T.find(t=>t.id===id)).filter(Boolean);
     if(!items.length)return;
