@@ -146,6 +146,35 @@ input,textarea{font-family:inherit;-webkit-appearance:none}
   .df-actions{padding:12px 16px;border-top:1px solid var(--border)}
 }
 
+
+/* ── Carousel builder ── */
+.car-ov{position:fixed;inset:0;z-index:200;background:var(--bg);display:none;flex-direction:column;overflow:hidden}
+.car-ov.on{display:flex}
+.car-top{flex-shrink:0;display:flex;align-items:center;gap:10px;padding:14px 16px;padding-top:calc(14px + env(safe-area-inset-top,0px));background:#fff;border-bottom:1px solid var(--border)}
+.car-top .ttl{font-size:16px;font-weight:700;color:var(--text);flex:1}
+.car-x{width:40px;height:40px;border-radius:20px;border:none;background:var(--bg);font-size:20px;color:var(--text);cursor:pointer;flex-shrink:0;touch-action:manipulation}
+.car-prof{display:flex;gap:6px;padding:10px 16px;background:#fff;border-bottom:1px solid var(--border);flex-shrink:0}
+.car-prof button{flex:1;height:38px;border-radius:19px;border:1.5px solid var(--border);background:#fff;font-size:13px;font-weight:600;color:var(--gray);cursor:pointer;touch-action:manipulation}
+.car-prof button.act-p{border-color:var(--lilla);background:var(--lilla);color:#fff}
+.car-prof button.act-s{border-color:var(--verde);background:var(--verde);color:#fff}
+.car-body{flex:1;overflow-y:auto;padding:14px 16px 120px}
+.car-slide{background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:14px}
+.car-slide .hd{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.car-slide .hd .nb{font-size:11px;font-weight:700;color:#fff;background:var(--gray);border-radius:10px;padding:2px 9px;letter-spacing:.5px}
+.car-slide .hd .nm{font-size:13px;font-weight:600;color:var(--text);flex:1}
+.car-slide .hd .rm{border:none;background:var(--bg);color:#c0392b;font-size:12px;font-weight:600;border-radius:8px;padding:5px 10px;cursor:pointer;touch-action:manipulation}
+.car-slide .row{display:flex;gap:12px}
+.car-slide .thmb{flex-shrink:0;width:108px;height:108px;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--bg)}
+.car-slide .thmb canvas{width:100%;height:100%;object-fit:cover;display:block}
+.car-slide .ff{flex:1;min-width:0}
+.car-slide .ff label{display:block;font-size:10px;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.4px;margin:6px 0 3px}
+.car-slide .ff label:first-child{margin-top:0}
+.car-slide .ff input,.car-slide .ff textarea{width:100%;border:1px solid var(--border);border-radius:8px;padding:7px 9px;font-size:13px;font-family:inherit;color:var(--text);background:#fff;resize:vertical;box-sizing:border-box}
+.car-add{width:100%;height:46px;border:1.5px dashed var(--border);border-radius:14px;background:#fff;font-size:14px;font-weight:600;color:var(--gray);cursor:pointer;touch-action:manipulation}
+.car-foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px;padding-bottom:calc(12px + var(--safe-b));background:#fff;border-top:1px solid var(--border);display:flex;gap:10px;z-index:201}
+.car-foot .dl{flex:1;height:50px;border:none;border-radius:25px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;touch-action:manipulation;display:flex;align-items:center;justify-content:center;gap:8px}
+.car-foot .dl svg{width:20px;height:20px}
+.car-hint{font-size:11px;color:var(--gray);text-align:center;padding:0 16px 8px;margin-top:-2px}
 </style>
 </head>
 <body>
@@ -177,6 +206,17 @@ input,textarea{font-family:inherit;-webkit-appearance:none}
   </div>
   <!-- COL 3: Fields sidebar (desktop only) -->
   <div class="desk-fields" id="deskFields"></div>
+</div>
+
+<div class="car-ov" id="carOv">
+  <div class="car-top">
+    <div class="ttl">🎠 Carosello</div>
+    <button class="car-x" onclick="closeCarousel()">✕</button>
+  </div>
+  <div class="car-prof" id="carProf"></div>
+  <div class="car-body" id="carBody"></div>
+  <div class="car-hint" id="carHint"></div>
+  <div class="car-foot" id="carFoot"></div>
 </div>
 
 <div class="ib" id="ib">
@@ -1211,6 +1251,12 @@ function buildGal(){
     btn.onclick=()=>{format=f;buildGal();if(sel)refreshEditor()};
     tabs.appendChild(btn);
   });
+  // ── Carosello entry ──
+  const cbtn=document.createElement("button");
+  cbtn.className="ptab";
+  cbtn.textContent="🎠 Carosello";
+  cbtn.onclick=openCarousel;
+  tabs.appendChild(cbtn);
 
   const g=document.getElementById("gal");g.innerHTML="";
   const allGroups=[
@@ -1452,6 +1498,133 @@ function dataURLtoBlob(url){
   const bin=atob(b64);const arr=new Uint8Array(bin.length);
   for(let i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);
   return new Blob([arr],{type:mime});
+}
+
+// ═══════════════════════════════════════
+//  CAROSELLO  (multi-slide, export in blocco → rullino)
+// ═══════════════════════════════════════
+let carSlides=[];
+
+function carNewSlide(tid){
+  const t=T.find(x=>x.id===tid);const v={};
+  t.fields.forEach(f=>{if(f.k!=="slide"&&!f.brand)v[f.k]=f.d;});
+  return {tid,vals:v};
+}
+
+// Render una slide del carosello su un canvas, scambiando lo stato globale
+function carDraw(slide,idx,total,canvas){
+  const sSel=sel,sVals=vals,sFmt=format,sExp=_exporting;
+  sel=slide.tid;
+  vals=Object.assign({},slide.vals,{slide:(idx+1)+"/"+total});
+  format="post";_exporting=true;
+  draw(canvas);
+  sel=sSel;vals=sVals;format=sFmt;_exporting=sExp;
+}
+
+function openCarousel(){
+  if(!carSlides.length)carSlides=[carNewSlide("A"),carNewSlide("B"),carNewSlide("CF")];
+  document.getElementById("carOv").classList.add("on");
+  carRender();
+}
+function closeCarousel(){
+  document.getElementById("carOv").classList.remove("on");
+  if(sel)requestAnimationFrame(draw);
+}
+
+function carSetProfilo(p){profilo=p;carRender()}
+
+function carRender(){
+  const studio=profilo==="studio";
+  // Profilo toggle
+  document.getElementById("carProf").innerHTML=
+    `<button class="${!studio?"act-p":""}" onclick="carSetProfilo('personale')">🟣 Ilenia</button>`+
+    `<button class="${studio?"act-s":""}" onclick="carSetProfilo('studio')">🟢 Psiche Holos</button>`;
+
+  const total=carSlides.length;
+  const body=document.getElementById("carBody");body.innerHTML="";
+
+  carSlides.forEach((sl,i)=>{
+    const t=T.find(x=>x.id===sl.tid);
+    const isCover=sl.tid==="A",isFinal=sl.tid==="CF";
+    const card=document.createElement("div");card.className="car-slide";
+    const role=isCover?"COPERTINA":isFinal?"FINALE":"INTERNA";
+    let h=`<div class="hd"><span class="nb">${i+1}/${total}</span><span class="nm">${role} · ${t.name}</span>`;
+    if(!isCover&&!isFinal)h+=`<button class="rm" onclick="carRemove(${i})">Rimuovi</button>`;
+    h+=`</div><div class="row"><div class="thmb" id="carTh-${i}"><canvas></canvas></div><div class="ff" id="carFf-${i}"></div></div>`;
+    card.innerHTML=h;body.appendChild(card);
+
+    // Campi editabili (esclusi brand e slide)
+    const ff=card.querySelector("#carFf-"+i);
+    t.fields.filter(f=>!f.brand&&f.k!=="slide").forEach(f=>{
+      const lab=document.createElement("label");lab.textContent=f.l;ff.appendChild(lab);
+      const el=document.createElement(f.t==="ta"?"textarea":"input");
+      if(f.t==="ta")el.rows=f.r||3;
+      el.value=sl.vals[f.k]??"";
+      el.oninput=e=>{sl.vals[f.k]=e.target.value;carThumb(i)};
+      ff.appendChild(el);
+    });
+    carThumb(i);
+  });
+
+  // Aggiungi slide (prima della finale)
+  const add=document.createElement("button");
+  add.className="car-add";add.textContent="＋ Aggiungi slide interna";
+  add.onclick=carAdd;body.appendChild(add);
+
+  document.getElementById("carHint").textContent=
+    "Le slide vengono salvate nel rullino in ordine. Su iPhone: tocca \u201CSalva "+total+" immagini\u201D.";
+
+  const ac=studio?"var(--verde)":"var(--lilla)";
+  document.getElementById("carFoot").innerHTML=
+    `<button class="dl" style="background:${ac}" onclick="exportCarousel()">`+
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`+
+    `Salva ${total} slide nel rullino</button>`;
+}
+
+function carThumb(i){
+  const total=carSlides.length;
+  const cv=document.querySelector("#carTh-"+i+" canvas");
+  if(cv)carDraw(carSlides[i],i,total,cv);
+}
+
+function carAdd(){
+  // inserisce una slide interna prima della finale (CF)
+  const fi=carSlides.findIndex(s=>s.tid==="CF");
+  const at=fi<0?carSlides.length:fi;
+  carSlides.splice(at,0,carNewSlide("B"));
+  carRender();
+}
+function carRemove(i){
+  carSlides.splice(i,1);carRender();
+}
+
+async function exportCarousel(){
+  if(_dlBusy)return;_dlBusy=true;
+  try{
+    const total=carSlides.length;const files=[];
+    for(let i=0;i<total;i++){
+      const off=document.createElement("canvas");off.width=1080;off.height=1080;
+      carDraw(carSlides[i],i,total,off);
+      const dataURL=off.toDataURL("image/png");
+      if(!dataURL||dataURL.length<100){showToast("Errore, riprova");_dlBusy=false;return}
+      files.push(new File([dataURLtoBlob(dataURL)],"carosello_"+String(i+1).padStart(2,"0")+".png",{type:"image/png"}));
+    }
+    const canShare=navigator.share&&navigator.canShare;
+    if(canShare&&navigator.canShare({files:files})){
+      showToast("Tocca \u201CSalva "+total+" immagini\u201D");
+      navigator.share({files:files,title:"Carosello"}).catch(()=>{}).finally(()=>{_dlBusy=false});
+      return;
+    }
+    // Fallback (desktop / no Web Share file): PNG singoli in sequenza, niente ZIP
+    for(let i=0;i<files.length;i++){
+      const url=URL.createObjectURL(files[i]);
+      const a=document.createElement("a");a.download=files[i].name;a.href=url;a.click();
+      URL.revokeObjectURL(url);
+      await new Promise(r=>setTimeout(r,450));
+    }
+    showToast("Scaricate "+total+" immagini");
+  }catch(e){console.error("Carousel:",e);showToast("Errore, riprova");}
+  _dlBusy=false;
 }
 
 let _dlBusy=false;
